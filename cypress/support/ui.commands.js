@@ -43,16 +43,13 @@ Cypress.Commands.add("uiRegisterUser", ({
 });
 
 // UI Search Products commands
-Cypress.Commands.add("loginUI", ({ email, password, validate = false }) => {
-  if (email) {
-    cy.get('[data-testid="email"]').type(email);
-  }
-  if (password) {
-    cy.get('[data-testid="senha"]').type(password);
-  }
-  cy.get('[data-testid="entrar"]').click();
+Cypress.Commands.add("uiSearchProduct", ({ productName, validate = false }) => {
+  cy.get('[data-testid="pesquisar"]').type(productName);
+  cy.get('[data-testid="botaoPesquisar"]').click();
   if (validate) {
-    cy.url().should("include", "/home");
-    cy.get('[data-testid="logout"]').should('be.visible');
+    cy.get(".card").should("have.length.greaterThan", 0);
+    cy.get(".card").each(($card) => {
+      cy.wrap($card).should("contain.text", productName);
+    });
   }
 });
