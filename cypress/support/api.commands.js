@@ -160,11 +160,10 @@ Cypress.Commands.add("apiGetUser", ({ id, validate = false }) => {
     });
 });
 
-Cypress.Commands.add("apiDeleteUser", (id, token, validate = false) => {
+Cypress.Commands.add("apiDeleteUser", (id, validate = false) => {
   return cy.request({
     method: "DELETE",
     url: `${usersApiUrl}/${id}`,
-    headers: token ? { Authorization: token } : {},
     failOnStatusCode: false,
   }).then((response) => {
     if (validate) {

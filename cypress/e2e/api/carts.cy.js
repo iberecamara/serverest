@@ -5,12 +5,18 @@ describe("API - Shopping Carts", () => {
   let product;
   let products;
   let response;
+  let userId;
 
   before(() => {
     cy.generateUser()
       .then((newUser) => {
         user = newUser;
-        cy.apiCreateUser({ user: user, validate: true });
+        cy.apiCreateUser({
+          user: user,
+          validate: true
+        }).then((response) => {
+          userId = response.body._id;
+        });
       });
 
     cy.apiGetProducts({ validate: true })
@@ -30,6 +36,7 @@ describe("API - Shopping Carts", () => {
 
   afterEach(() => {
     cy.apiCancelPurchase({ headers: { Authorization: token } });
+    cy.apiDeleteUser({ id: userId });
   });
 
   it("Validates that a cart is created for the authenticated user with a valid product.", () => {

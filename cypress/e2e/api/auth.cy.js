@@ -1,13 +1,24 @@
 describe("API - Authentication", () => {
 
   let user;
+  let userId;
+  let token;
 
   before(() => {
     cy.generateUser()
       .then((newUser) => {
         user = newUser;
-        cy.apiCreateUser({ user: user, validate: true });
+        cy.apiCreateUser({
+          user: user,
+          validate: true
+        }).then((response) => {
+          userId = response.body._id;
+        });
       });
+  });
+
+  afterEach(() => {
+    cy.apiDeleteUser({ id: userId });
   });
 
   it("Validates that authentication happens successfully with valid credentials.", () => {
@@ -32,6 +43,7 @@ describe("API - Authentication", () => {
           response.body.authorization,
           `User Login response body '${field}' should start with the value 'Bearer'.`
         ).to.match(/^Bearer\s.+/);
+        token = response.body.authorization;
       });
   });
 
