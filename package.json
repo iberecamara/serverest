@@ -1,0 +1,31 @@
+{
+  "name": "serverest-cypress-automation",
+  "version": "1.0.0",
+  "description": "Cypress test automation suite (UI + API) for the ServeRest practice application: https://front.serverest.dev and https://serverest.dev",
+  "private": true,
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "cypress run",
+    "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\"",
+    "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
+    "test:api:auth": "cypress run --spec \"cypress/e2e/api/auth.cy.js\"",
+    "test:api:carts": "cypress run --spec \"cypress/e2e/api/carts.cy.js\"",
+    "test:api:products": "cypress run --spec \"cypress/e2e/api/products.cy.js\"",
+    "test:api:users": "cypress run --spec \"cypress/e2e/api/users.cy.js\"",
+    "test:chrome": "cypress run --browser chrome",
+    "report:generate": "npx allure generate ./artifacts/reports/allure/allure-results -o ./artifacts/reports/allure/allure-report",
+    "report:open": "npx allure open ./artifacts/reports/allure/allure-report",
+    "report:export": "allure awesome generate ./artifacts/reports/allure/allure-results -o ./artifacts/reports/allure/allure-report-single --single-file",
+    "report": "npm run report:generate && npm run report:open",
+    "clean": "rimraf artifacts"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "allure": "^3.10.0",
+    "allure-cypress": "^3.10.2",
+    "cypress": "^15.18.0",
+    "cypress-terminal-report": "^7.3.3",
+    "rimraf": "^6.1.3"
+  }
+}
