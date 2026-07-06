@@ -10,7 +10,6 @@ const cartsApiUrl = `${baseApiUrl}/carrinhos`;
 const cancelPurchaseApiUrl = `${cartsApiUrl}/cancelar-compra`;
 
 module.exports = defineConfig({
-  // Global settings
   viewportWidth: 1366,
   viewportHeight: 768,
   defaultCommandTimeout: 10000,
@@ -22,11 +21,12 @@ module.exports = defineConfig({
   retries: 0,
 
   e2e: {
-    // UI (front-end) target under test
     baseUrl: "https://front.serverest.dev",
     specPattern: "cypress/e2e/**/*.cy.js",
     supportFile: "cypress/support/e2e.js",
+    video: true,
     screenshotsFolder: "artifacts/screenshots",
+    videosFolder: "artifacts/videos",
     setupNodeEvents(on, config) {
       allureCypress(on, config, {
         resultsDir: "artifacts/reports/allure/allure-results",
@@ -39,6 +39,14 @@ module.exports = defineConfig({
           'artifacts/logs/test-automation.log': 'txt',
         }
       });
+      on('after:spec', (spec, results) => {
+        if (results && results.video) {
+          const failures = results.tests.some(test => test.attempts.some(attempt => attempt.state === 'failed'));
+          if (!failures) {
+            fs.unlinkSync(results.video);
+          }
+        }
+      });
       return config;
     },
     retries: {
@@ -47,7 +55,6 @@ module.exports = defineConfig({
     },
   },
 
-  // Custom env vars available via Cypress.env()
   expose: {
     baseApiUrl: baseApiUrl,
     loginApiUrl: `${baseApiUrl}/login`,
