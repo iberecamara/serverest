@@ -9,7 +9,7 @@
     "test": "cypress run",
     "test:ui": "cypress run --spec \"cypress/e2e/ui/**/*.cy.js\"",
     "test:ui:login": "cypress run --spec \"cypress/e2e/ui/login.cy.js\"",
-    "test:ui:register-user": "cypress run --spec \"cypress/e2e/ui/register-user.cy.cy.js\"",
+    "test:ui:register-user": "cypress run --spec \"cypress/e2e/ui/register-user.cy.js\"",
     "test:ui:search-products": "cypress run --spec \"cypress/e2e/ui/search-products.cy.js\"",
     "test:ui:shopping-cart": "cypress run --spec \"cypress/e2e/ui/shopping-cart.cy.js\"",
     "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
