@@ -8,7 +8,7 @@ ServeRest practice application:
 
 ## Stack
 
-- [Cypress](https://www.cypress.io/) 13.x
+- [Cypress](https://www.cypress.io/) 15.x
 - Plain JavaScript (no TypeScript required)
 - `cy.request()` for API testing, standard Cypress commands for UI testing
 

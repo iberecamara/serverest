@@ -1,4 +1,5 @@
-Cypress.Commands.add("loginUI", ({ email, password, validate = false }) => {
+// UI Login commands
+Cypress.Commands.add("uiLogin", ({ email, password, validate = false }) => {
   if (email) {
     cy.get('[data-testid="email"]').type(email);
   }
@@ -12,7 +13,8 @@ Cypress.Commands.add("loginUI", ({ email, password, validate = false }) => {
   }
 });
 
-Cypress.Commands.add("registerUserUI", ({
+// UI Register User commands
+Cypress.Commands.add("uiRegisterUser", ({
   name,
   email,
   password,
@@ -37,5 +39,20 @@ Cypress.Commands.add("registerUserUI", ({
       /Cadastro realizado com sucesso/i,
       { timeout: 10000 }
     ).should("be.visible");
+  }
+});
+
+// UI Search Products commands
+Cypress.Commands.add("loginUI", ({ email, password, validate = false }) => {
+  if (email) {
+    cy.get('[data-testid="email"]').type(email);
+  }
+  if (password) {
+    cy.get('[data-testid="senha"]').type(password);
+  }
+  cy.get('[data-testid="entrar"]').click();
+  if (validate) {
+    cy.url().should("include", "/home");
+    cy.get('[data-testid="logout"]').should('be.visible');
   }
 });

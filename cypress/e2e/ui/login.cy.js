@@ -22,7 +22,7 @@ describe("UI - Login", () => {
   });
 
   it("Validates that an user with valid credentials can login successfully.", () => {
-    cy.loginUI({
+    cy.uiLogin({
       email: user.email,
       password: user.password,
       validate: true
@@ -30,7 +30,7 @@ describe("UI - Login", () => {
   });
 
   it("Validates that an user with invalid credentials cannot login successfully.", () => {
-    cy.loginUI({
+    cy.uiLogin({
       email: user.email,
       password: 'invalid_password'
     });
@@ -39,7 +39,7 @@ describe("UI - Login", () => {
   });
 
   it("Validates that both email and password are required", () => {
-    cy.loginUI({
+    cy.uiLogin({
       email: null,
       password: null
     });

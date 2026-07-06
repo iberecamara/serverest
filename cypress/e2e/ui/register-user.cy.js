@@ -9,7 +9,7 @@ describe("UI - User Registration", () => {
   it("Validates that a new normal user can be registered successfully.", () => {
     cy.generateUser()
       .then((user) => {
-        cy.registerUserUI({
+        cy.uiRegisterUser({
           name: user.nome,
           email: user.email,
           password: user.password,
@@ -24,14 +24,14 @@ describe("UI - User Registration", () => {
   it("Validates that a new admin user can be registered successfully.", () => {
     cy.generateUser({ administrador: 'true' })
       .then((user) => {
-        cy.registerUserUI({
+        cy.uiRegisterUser({
           name: user.nome,
           email: user.email,
           password: user.password,
           admin: user.administrador,
           validate: true
         });
-        cy.loginUI(user.email, user.password);
+        cy.uiLogin(user.email, user.password);
         cy.url().should("include", "/home");
       });
   });
@@ -40,7 +40,7 @@ describe("UI - User Registration", () => {
     cy.generateUser().then((user) => {
       cy.apiCreateUser({ user: user, validate: true });
 
-      cy.registerUserUI({
+      cy.uiRegisterUser({
         name: faker.person.fullName(),
         email: user.email,
         password: faker.internet.password(),
