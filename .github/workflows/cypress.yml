@@ -46,3 +46,12 @@ jobs:
           name: Automation Screenshots
           path: artifacts/screenshots/
           retention-days: 30
+          if-no-files-found: ignore
+      - name: Upload videos
+        uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: Automation Screenshots
+          path: artifacts/screenshots/
+          retention-days: 30
+          if-no-files-found: ignore
