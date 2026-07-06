@@ -11,7 +11,7 @@
     "test:ui:login": "cypress run --spec \"cypress/e2e/ui/login.cy.js\"",
     "test:ui:register-user": "cypress run --spec \"cypress/e2e/ui/register-user.cy.js\"",
     "test:ui:search-products": "cypress run --spec \"cypress/e2e/ui/search-products.cy.js\"",
-    "test:ui:shopping-cart": "cypress run --spec \"cypress/e2e/ui/shopping-cart.cy.js\"",
+    "test:ui:shopping-list": "cypress run --spec \"cypress/e2e/ui/shopping-list.cy.js\"",
     "test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\"",
     "test:api:auth": "cypress run --spec \"cypress/e2e/api/auth.cy.js\"",
     "test:api:carts": "cypress run --spec \"cypress/e2e/api/carts.cy.js\"",

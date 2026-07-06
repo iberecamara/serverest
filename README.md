@@ -24,7 +24,7 @@ serverest
 │   │   │   ├── register-user.cy.js
 │   │   │   ├── login.cy.js
 │   │   │   ├── search-products.cy.js
-│   │   │   └── shopping-cart.cy.js
+│   │   │   └── shopping-list.cy.js
 │   │   └── api/                # 4 API specs
 │   │       ├── auth.cy.js
 │   │       ├── usuarios.cy.js
@@ -57,7 +57,7 @@ npm run test:ui                     # UI / E2E specs only
 npm run test:ui:login               # UI / E2E specs only
 npm run test:ui:register-user       # UI / E2E specs only
 npm run test:ui:search-products     # UI / E2E specs only
-npm run test:ui:shopping-cart       # UI / E2E specs only
+npm run test:ui:shopping-list       # UI / E2E specs only
 npm run test:api                    # API specs only
 npm run test::auth                  # Auth API specs only
 npm run test:api:carts              # Carts API specs only
