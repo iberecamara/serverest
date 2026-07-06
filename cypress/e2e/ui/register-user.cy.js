@@ -16,7 +16,7 @@ describe("UI - User Registration", () => {
           admin: user.administrador,
           validate: true
         });
-        cy.loginUI(user.email, user.password);
+        cy.uiLogin(user.email, user.password);
         cy.url().should("include", "/home");
       });
   });
