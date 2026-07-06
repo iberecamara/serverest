@@ -39,6 +39,7 @@ jobs:
           name: Automation Logs
           path: artifacts/logs/
           retention-days: 30
+          overwrite: true
       - name: Upload screenshots
         uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
@@ -46,6 +47,7 @@ jobs:
           name: Automation Screenshots
           path: artifacts/screenshots/
           retention-days: 30
+          overwrite: true
           if-no-files-found: ignore
       - name: Upload videos
         uses: actions/upload-artifact@v7
@@ -54,4 +56,5 @@ jobs:
           name: Automation Screenshots
           path: artifacts/screenshots/
           retention-days: 30
+          overwrite: true
           if-no-files-found: ignore
