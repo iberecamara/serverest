@@ -24,9 +24,9 @@ describe("UI - Product Search", () => {
       });
   });
 
-  // it("Validates that searching for a non-existing product returns no results.", () => {
-  //   cy.uiSearchProduct({ productName: 'invalid product name' });
-  //   cy.get(".card").should("have.length", 0);
-  // });
+  it("Validates that searching for a non-existing product returns no results.", () => {
+    cy.uiSearchProduct({ productName: 'invalid product name' });
+    cy.get(".card").should("have.length", 0);
+  });
 
 });
