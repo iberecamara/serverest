@@ -2,6 +2,7 @@ import "allure-cypress";
 import installLogsCollector from 'cypress-terminal-report/src/installLogsCollector';
 import "./api.commands";
 import "./common.commands";
+import "./ui.commands";
 
 // API URLs
 const usersApiUrl = Cypress.expose("usersApiUrl");

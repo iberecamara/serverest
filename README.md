@@ -53,10 +53,14 @@ npm run cy:run
 ### Run only one suite
 
 ```bash
-npm run test:ui             # UI / E2E specs only
-npm run test:api            # API specs only
-npm run test::auth          # Auth API specs only
-npm run test:api:carts      # Carts API specs only
-npm run test:api:products   # Products API specs only
-npm run test:api:users      # Users API specs only
+npm run test:ui                     # UI / E2E specs only
+npm run test:ui:login               # UI / E2E specs only
+npm run test:ui:register-user       # UI / E2E specs only
+npm run test:ui:search-products     # UI / E2E specs only
+npm run test:ui:shopping-cart       # UI / E2E specs only
+npm run test:api                    # API specs only
+npm run test::auth                  # Auth API specs only
+npm run test:api:carts              # Carts API specs only
+npm run test:api:products           # Products API specs only
+npm run test:api:users              # Users API specs only
 ```
