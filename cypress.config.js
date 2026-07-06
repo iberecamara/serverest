@@ -1,6 +1,7 @@
+import { allureCypress } from "allure-cypress/reporter";
 const { defineConfig } = require("cypress");
 const installLogsPrinter = require("cypress-terminal-report/src/installLogsPrinter");
-import { allureCypress } from "allure-cypress/reporter";
+const fs = require('node:fs');
 
 const baseApiUrl = "https://serverest.dev";
 const loginApiUrl = `${baseApiUrl}/login`;
