@@ -1,6 +1,8 @@
 const { getRandomElement } = require('../../utils/arrays.utils');
 
-describe("UI - Product Search", () => {
+describe("UI - Product Search", {
+  tags: ['@ui', '@product', '@product-search']
+}, () => {
 
   let user;
 
@@ -16,7 +18,9 @@ describe("UI - Product Search", () => {
     cy.uiLogin({ email: user.email, password: user.password, validate: true });
   });
 
-  it("Validates that an existing product can be searched by its name.", () => {
+  it("Validates that an existing product can be searched by its name.", {
+    tags: ['@existing-product']
+  }, () => {
     cy.apiGetProducts({ validate: true })
       .then((response) => {
         const product = getRandomElement(response.body.produtos);
@@ -24,7 +28,9 @@ describe("UI - Product Search", () => {
       });
   });
 
-  it("Validates that searching for a non-existing product returns no results.", () => {
+  it("Validates that searching for a non-existing product returns no results.", {
+    tags: ['@non-existing-product']
+  }, () => {
     cy.uiSearchProduct({ productName: 'invalid product name' });
     cy.get(".card").should("have.length", 0);
   });

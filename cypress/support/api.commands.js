@@ -166,6 +166,9 @@ Cypress.Commands.add("apiDeleteUser", (id, validate = false) => {
     url: `${usersApiUrl}/${id}`,
     failOnStatusCode: false,
   }).then((response) => {
+    if (response.status !== 200) {
+      cy.log(`Error deleting user with id: ${id}`);
+    }
     if (validate) {
       expect(
         response.status,
@@ -254,6 +257,9 @@ Cypress.Commands.add("apiDeleteProduct", ({ id, headers = {}, validate = false }
     headers: headers,
     failOnStatusCode: false,
   }).then((response) => {
+    if (response.status !== 200) {
+      cy.log(`Error deleting product with id: ${id}`);
+    }
     if (validate) {
       expect(
         response.status,

@@ -1,12 +1,17 @@
 const { faker } = require("@faker-js/faker");
+const { tags } = require("allure-cypress");
 
-describe("UI - User Registration", () => {
+describe("UI - User Registration", {
+  tags: ['@ui', '@user', '@user-registration']
+}, () => {
 
   beforeEach(() => {
     cy.visit("/cadastrarusuarios");
   });
 
-  it("Validates that a new normal user can be registered successfully.", () => {
+  it("Validates that a new normal user can be registered successfully.", {
+    tags: ['@common-user']
+  }, () => {
     cy.generateUser()
       .then((user) => {
         cy.uiRegisterUser({
@@ -21,7 +26,9 @@ describe("UI - User Registration", () => {
       });
   });
 
-  it("Validates that a new admin user can be registered successfully.", () => {
+  it("Validates that a new admin user can be registered successfully.", {
+    tags: ['@admin-user']
+  }, () => {
     cy.generateUser({ administrador: 'true' })
       .then((user) => {
         cy.uiRegisterUser({
@@ -36,7 +43,9 @@ describe("UI - User Registration", () => {
       });
   });
 
-  it("Validates that a new normal user cannot be registered using an email that already exists.", () => {
+  it("Validates that a user cannot be registered using an email that already exists.", {
+    tags: ['@duplicated-email', '@user-registration-error']
+  }, () => {
     cy.generateUser().then((user) => {
       cy.apiCreateUser({ user: user, validate: true });
 

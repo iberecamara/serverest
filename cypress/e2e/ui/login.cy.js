@@ -1,4 +1,6 @@
-describe("UI - Login", () => {
+describe("UI - Login", {
+  tags: ['@ui', '@login']
+}, () => {
 
   let user;
   let userId;
@@ -21,7 +23,9 @@ describe("UI - Login", () => {
     cy.apiDeleteUser({ id: userId });
   });
 
-  it("Validates that an user with valid credentials can login successfully.", () => {
+  it("Validates that an user with valid credentials can login successfully.", {
+    tags: ['@valid-credentials']
+  }, () => {
     cy.uiLogin({
       email: user.email,
       password: user.password,
@@ -29,7 +33,9 @@ describe("UI - Login", () => {
     });
   });
 
-  it("Validates that an user with invalid credentials cannot login successfully.", () => {
+  it("Validates that an user with invalid credentials cannot login successfully.", {
+    tags: ['@invalid-credentials']
+  }, () => {
     cy.uiLogin({
       email: user.email,
       password: 'invalid_password'
@@ -38,7 +44,9 @@ describe("UI - Login", () => {
     cy.url().should("include", "/login");
   });
 
-  it("Validates that both email and password are required", () => {
+  it("Validates that both email and password are required", {
+    tags: ['@required-fields']
+  }, () => {
     cy.uiLogin({
       email: null,
       password: null

@@ -12,9 +12,5 @@ const cartsApiUrl = Cypress.expose("cartsApiUrl");
 const cancelPurchaseApiUrl = Cypress.expose("cancelPurchaseApiUrl");
 
 installLogsCollector({
-  enableExtendedCollector: true // 👈 Activates tracking for before/after hooks
-});
-
-Cypress.on("uncaught:exception", () => {
-  return false;
+  enableExtendedCollector: true
 });

@@ -1,10 +1,14 @@
 const { faker } = require("@faker-js/faker");
 
-describe("API - Products", () => {
+describe("API - Products", {
+  tags: ['@api', '@products']
+}, () => {
 
   let token;
 
-  it("Validate that Get All Products returns the list of existing products.", () => {
+  it("Validate that Get All Products returns the list of existing products.", {
+    tags: ['@all-products']
+  }, () => {
     cy.apiGetProducts(
       { validate: true }
     ).then((response) => {
@@ -28,7 +32,9 @@ describe("API - Products", () => {
     });
   });
 
-  it("Validates that Create Product without the Authorization token should not be allowed.", () => {
+  it("Validates that Create Product without the Authorization token should not be allowed.", {
+    tags: ['@create-product', '@invalid-authorization']
+  }, () => {
     cy.apiCreateProduct({
       body: {
         nome: faker.commerce.product(),
@@ -49,7 +55,9 @@ describe("API - Products", () => {
     });
   });
 
-  it("Validates that an authenticated admin can create and delete a product.", () => {
+  it("Validates that an authenticated admin can create and delete a product.", {
+    tags: ['@create-product', '@delete-product']
+  }, () => {
     let userId;
     let productId;
     cy.generateUser({ administrador: "true" })

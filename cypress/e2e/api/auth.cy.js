@@ -1,4 +1,6 @@
-describe("API - Authentication", () => {
+describe("API - Authentication", {
+  tags: ['@api', '@authentication']
+}, () => {
 
   let user;
   let userId;
@@ -21,7 +23,9 @@ describe("API - Authentication", () => {
     cy.apiDeleteUser({ id: userId });
   });
 
-  it("Validates that authentication happens successfully with valid credentials.", () => {
+  it("Validates that authentication happens successfully with valid credentials.", {
+    tags: ['@valid-credentials']
+  }, () => {
     cy.apiLogin({ email: user.email, password: user.password })
       .then((response) => {
         expect(
@@ -47,7 +51,9 @@ describe("API - Authentication", () => {
       });
   });
 
-  it("Validates that authentication with an incorrect password returns an error response.", () => {
+  it("Validates that authentication with an incorrect password returns an error response.", {
+    tags: ['@invalid-credentials']
+  }, () => {
     cy.apiLogin({ email: user.email, password: "invalid password" })
       .then((response) => {
         expect(
@@ -68,7 +74,9 @@ describe("API - Authentication", () => {
       });
   });
 
-  it("Validates that authentication without email and password returns an error message.", () => {
+  it("Validates that authentication without email and password returns an error message.", {
+    tags: ['@missing-fields']
+  }, () => {
     cy.apiLogin({})
       .then((response) => {
         expect(

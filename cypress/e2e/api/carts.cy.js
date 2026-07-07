@@ -1,4 +1,6 @@
-describe("API - Shopping Carts", () => {
+describe("API - Shopping Carts", {
+  tags: ['@api', '@shopping-carts']
+}, () => {
 
   let user;
   let token;
@@ -39,7 +41,9 @@ describe("API - Shopping Carts", () => {
     cy.apiDeleteUser({ id: userId });
   });
 
-  it("Validates that a cart is created for the authenticated user with a valid product.", () => {
+  it("Validates that a cart is created for the authenticated user with a valid product.", {
+    tags: ['@valid-cart']
+  }, () => {
     cy.apiAddToCart({
       headers: { 'Authorization': token },
       body: {
@@ -61,7 +65,9 @@ describe("API - Shopping Carts", () => {
     });
   });
 
-  it("Validates that a user cannot have two open carts at the same time.", () => {
+  it("Validates that a user cannot have two open carts at the same time.", {
+    tags: ['@duplicated-cart-error']
+  }, () => {
     cy.apiAddToCart({
       headers: { 'Authorization': token },
       body: {
@@ -88,7 +94,9 @@ describe("API - Shopping Carts", () => {
     });
   });
 
-  it("Validates that cancelling the purchase empties the cart", () => {
+  it("Validates that cancelling the purchase empties the cart", {
+    tags: ['@cancel-purchase']
+  }, () => {
     cy.apiAddToCart({
       headers: { 'Authorization': token },
       body: {

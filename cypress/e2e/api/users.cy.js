@@ -1,8 +1,12 @@
 const { faker } = require("@faker-js/faker");
 
-describe("API - Users", () => {
+describe("API - Users", {
+  tags: ['@api', '@users']
+}, () => {
 
-  it("Validates that Get All User lists all registered users.", () => {
+  it("Validates that Get All User lists all registered users.", {
+    tags: ['@all-users']
+  }, () => {
     cy.apiGetUsers({ validate: false })
       .then((response) => {
         expect(response.status).to.eq(200);
@@ -21,7 +25,9 @@ describe("API - Users", () => {
       });
   });
 
-  it("Validates that the complete lifecycle (create -> read -> update -> delete) for a user is supported", () => {
+  it("Validates that the complete lifecycle (create -> read -> update -> delete) for a user is supported", {
+    tags: ['@user-lifecycle']
+  }, () => {
     cy.generateUser().then((user) => {
       let userId;
 
@@ -64,7 +70,9 @@ describe("API - Users", () => {
     });
   });
 
-  it("Validates that creating a user with an email that is already registered is not allowed.", () => {
+  it("Validates that creating a user with an email that is already registered is not allowed.", {
+    tags: ['@duplicated-email']
+  }, () => {
     let userId;
     cy.generateUser().then((user) => {
       cy.apiCreateUser({
