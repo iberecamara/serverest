@@ -11,7 +11,7 @@ export function getRandomElements(array, options) {
     const elements = [];
     const usedIndices = new Set();
     while (elements.length < amount) {
-        const randomIndex = faker.number.int({ min: 0, max: array.length });
+        const randomIndex = faker.number.int({ min: 0, max: array.length - 1 });
         if (!usedIndices.has(randomIndex)) {
             usedIndices.add(randomIndex);
             elements.push(array[randomIndex]);
